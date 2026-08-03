@@ -49,7 +49,11 @@ export const runCommand = new Command('run')
 
         const reportSpinner = ora({ text: chalk.gray('generating report...'), spinner: 'dots' }).start();
 
-        const { title, report } = await generateReport(results, url, goal, llm);
-        const filepath = saveReport(title, report);
-        reportSpinner.stopAndPersist({ symbol: '📋', text: chalk.gray('report saved → ') + chalk.white(filepath) });
+        try {
+            const { title, report } = await generateReport(results, url, goal, llm);
+            const filepath = saveReport(title, report);
+            reportSpinner.stopAndPersist({ symbol: '📋', text: chalk.gray('report saved → ') + chalk.white(filepath) });
+        } catch (err: unknown) {
+            reportSpinner.fail(chalk.red(`Failed to generate report: ${err instanceof Error ? err.message : String(err)}`));
+        }
     })
