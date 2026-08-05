@@ -155,7 +155,7 @@ export class LLM {
             model,
             temperature: 0.4,
             max_tokens: 2048,
-            response_format: { type: 'json_object' },
+            ...(input.jsonMode ? { response_format: { type: 'json_object' } } : {}),
             messages: [
                 { role: 'system', content: input.system },
                 ...input.messages.map(m => ({

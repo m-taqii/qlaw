@@ -65,6 +65,7 @@ export interface ProviderConfig {
 export interface LLMInput {
   system: string
   messages: LLMMessage[]
+  jsonMode?: boolean
 }
 
 export interface LLMMessage {

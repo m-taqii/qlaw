@@ -138,7 +138,8 @@ Set "type" to "stuck" only after ${this.persona.patience <= 3 ? '2' : this.perso
     public async decide(pageState: PageState, history: HistoryEntry[]): Promise<Action> {
         const input: LLMInput = {
             system: this.buildSystemPrompt(),
-            messages: [{ role: 'user', content: this.buildUserMessage(pageState, history) }]
+            messages: [{ role: 'user', content: this.buildUserMessage(pageState, history) }],
+            jsonMode: true,
         }
 
         const response = await this.llm.complete(input)
