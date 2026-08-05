@@ -1,6 +1,6 @@
 {
   "name": "crawlix",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "AI testers that think like users. Your users will break it anyway. Crawlix finds it first.",
   "main": "./dist/cli/index.js",
   "exports": {
